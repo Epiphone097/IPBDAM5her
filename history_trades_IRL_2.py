@@ -1,12 +1,8 @@
-import csv
 import datetime
 import math
 import sqlite3
-import time
 import uuid
-import numpy
 import talib
-from util import currency
 import pandas as pd
 
 PATTERN_RANKING = {

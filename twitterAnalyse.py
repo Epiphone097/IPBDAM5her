@@ -5,10 +5,10 @@ import requests
 import pandas as pd
 
 pd.set_option("display.max_rows", None, "display.max_columns", None)
-
+dfToCSV = pd.DataFrame()
 while True:
     nu = datetime.now()
-    if nu.minute == 0:
+    if nu.minute == 00:
 
         auth = requests.auth.HTTPBasicAuth('2tGCiuEPOsH1Ug', 'ri8tbdmNIRUHZPJ22PtFs0bXnV4k_g')
         data = {'grant_type': 'password',
@@ -40,9 +40,8 @@ while True:
             totaal += df.iloc[index][1] + df.iloc[index][2]
             # print("Rijtje: ", index, df.iloc[index][1] + df.iloc[index][2])
             index += 1
-        print(nu.hour, nu.minute, totaal)
+        print(nu.date(), nu.hour, totaal)
+        dfToCSV = dfToCSV.append({'Date': nu.date(), 'Uur': nu.hour, 'Score': totaal}, ignore_index=True)
+        print(dfToCSV)
+        dfToCSV.to_csv("redditSentiment.csv")
         time.sleep(61)
-
-
-#print(nu.hour)
-#df.to_csv('jannes.csv')

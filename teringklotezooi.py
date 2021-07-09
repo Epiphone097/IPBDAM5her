@@ -1,17 +1,9 @@
-import math
 import re
 from datetime import datetime
-import csv
-import csv
 import datetime
 import math
-import sqlite3
-import time
-import uuid
-import numpy
-import talib
-from util import currency
 import pandas as pd
+
 def epoch_to_date_time(ts):
     if get_integer_places(ts) == 10:
         return datetime.datetime.fromtimestamp(ts)
