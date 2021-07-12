@@ -266,7 +266,7 @@ def history_trades(con):
         signal, pattern = check_signal(candles[i:i+1], candle_names) # Het signaal en pattern ophalen
         # Maak trades tot 20u want om 21u wordt gestopt met traden dus we willen niet kopen om 21u
         if candles['date_time'][i].hour < 21:
-            if (signal == 1): # Bull signal en als de pattern in de patternArray staat
+            if (signal == 1 and pattern in patternArray): # Bull signal en als de pattern in de patternArray staat
                 # Bull signal
                 # primary trade voor bull signaal (kopen van de coins)
                 trade_id = uuid.uuid4() # random trade id genereren
@@ -352,7 +352,7 @@ def history_trades(con):
                 con.commit()
                 # Secondary trade completed (verkopen)
 
-            elif (signal == 2): # Bearish signal
+            elif (signal == 2 and pattern in patternArray): # Bearish signal
                 # primary trade (Short gaan, dus verkopen wat we niet hebben)
                 trade_id = uuid.uuid4()
                 cur.execute("select wallet_id from wallet")
