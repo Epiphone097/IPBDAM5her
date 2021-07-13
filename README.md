@@ -6,3 +6,4 @@
 * Alle SQLITE verbindingen veranderd naar MySQL
 * Code duidelijker en overzichtelijker gemaakt
 * Code opgedeeld in modules
+* Test rapport: Code overzicht toegevoegd
